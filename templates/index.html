@@ -1,0 +1,38 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>NLP Chatbot with RAG</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>NLP Chatbot with RAG</h1>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="pdf" accept=".pdf" required>
+            <button type="submit">Upload PDF</button>
+        </form>
+
+        <br>
+
+        <form action="/ask" method="POST">
+            <input
+                type="text"
+                name="question"
+                placeholder="Ask a question..."
+                required
+            >
+            <button type="submit">Ask</button>
+        </form>
+
+        {% if answer %}
+        <div class="answer">
+            <h3>Answer</h3>
+            <p>{{ answer }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
